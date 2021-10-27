@@ -25,7 +25,6 @@ jobs:
         id: validate
         run: terraform validate -no-color
         working-directory: infrastructure/environments/dev
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
