@@ -16,3 +16,13 @@ resource "azurerm_resource_group" "tenant" {
 
   tags = local.tags
 }
+
+resource "azurerm_app_service_plan" "plan" {
+  location            = local.location
+  name                = "${local.prefix}-plan-${var.environment}"
+  resource_group_name = azurerm_resource_group.tenant.name
+  sku {
+    tier = "Free"
+    size = "F1"
+  }
+}
